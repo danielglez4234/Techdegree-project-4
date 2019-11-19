@@ -38,8 +38,10 @@ li, ol, ul {
 h2 {
   margin: 0;
   text-transform: uppercase;
-  font-size: var(--font-size-large);
+  font-size: 75px;
   margin: 0;
+  font-family: OdibeeSans;
+  letter-spacing: 15px;
 }
 
 h1 {
@@ -58,6 +60,7 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
   cursor: pointer;
+  font-family: JosefinSans_SemiBoldItalic;
 }
 
 #btn__reset {
@@ -181,6 +184,8 @@ button {
 
 .start {
   background-color: #f92162;
+  background-image: url('../images/background_2.jpg');
+  background-size: cover;
 }
 
 .start a {
@@ -201,4 +206,17 @@ button {
 
 .lose a {
   color: var(--color-lose);
+}
+
+@font-face {
+  font-family: JosefinSans_Bold;
+  src: url('../fonts/JosefinSans/JosefinSans-Bold.ttf');
+}
+@font-face {
+  font-family: JosefinSans_SemiBoldItalic;
+  src: url('../fonts/JosefinSans/JosefinSans-SemiBoldItalic.ttf');
+}
+@font-face {
+  font-family: OdibeeSans;
+  src: url('../fonts/OdibeeSans/OdibeeSans-Regular.ttf');
 }

@@ -25,19 +25,20 @@
   // * @return {Object} Phrase object chosen to be used
   getRandomPhrase(){
     const phraseArray = this.phrases;
-    const randomPhrase = phraseArray[Math.floor(Math.random() * phraseArray.length)].phrase;
+    const randomPhrase = new Phrase(phraseArray[Math.floor(Math.random() * phraseArray.length)].phrase);
     return randomPhrase;
   };
 
   // * Begins game by selecting a random phrase and displaying it to user
   startGame(){
     $('#overlay').slideUp(1000);
-    const activePhrase = this.getRandomPhrase();
-    const phrase = new Phrase(activePhrase);
-    phrase.addPhraseToDisplay();
-    this.activePhrase = activePhrase;
+    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase.addPhraseToDisplay();
+
+    // reset
     this.missed = 0;
     $('.tries img').attr('src', 'images/liveHeart.png');
+    $('.key').removeClass('wrong').removeClass('chosen');
   };
 
   // * Checks for winning move
@@ -83,7 +84,24 @@
       $('#game-over-message').text('Sorry, better luck next time!');
       $('#overlay').slideDown(500);
     }
+  };
 
+// * Handles onscreen keyboard button clicks
+// * @param (HTMLButtonElement) button - The clicked button element
+  handleInteraction(button) {
+    if (!button.classList.contains('chosen') && !button.classList.contains('wrong')) {
+        console.log(button);
+      if (this.activePhrase.checkLetter(button.textContent)) {
+        button.classList.add('chosen');
+        this.activePhrase.showMatchedLetter(button.textContent);
+      }else {
+        this.removeLife();
+        button.classList.add('wrong');
+      }
+      if (this.checkForWin()) {
+        this.gameOver(true);
+      }
+    }
   };
 
 

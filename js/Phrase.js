@@ -16,7 +16,7 @@
     const theActualPhrase = this.phrase;
     for (let i = 0; i < theActualPhrase.length; i++) {
       const $li = $('<li class="hide letter '+ theActualPhrase.charAt(i) +'">'+ theActualPhrase.charAt(i) +'</li>');
-      const $liSpace = $('<li class="hide space" display="none"></li>');
+      const $liSpace = $('<li class="hide space"></li>');
       if (theActualPhrase.charAt(i) != ' ') {
         $ul.append($li);
       }else {
@@ -24,7 +24,6 @@
       }
     }
   }
-
 
   // * Checks if passed letter is in phrase
   // * @param (string) letter - Letter to check

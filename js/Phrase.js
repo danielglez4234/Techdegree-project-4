@@ -11,13 +11,14 @@
   addPhraseToDisplay(){
     const $ul = $('#phrase ul');
     const ifExistsPhrase = $('#phrase ul li');
-    ifExistsPhrase.remove();
+    ifExistsPhrase.remove(); // to avoid duplicates all <li> are removed first
 
     const theActualPhrase = this.phrase;
-    for (let i = 0; i < theActualPhrase.length; i++) {
+    for (let i = 0; i < theActualPhrase.length; i++) { // loop over each letter
       const $li = $('<li class="hide letter '+ theActualPhrase.charAt(i) +'">'+ theActualPhrase.charAt(i) +'</li>');
       const $liSpace = $('<li class="hide space"></li>');
-      if (theActualPhrase.charAt(i) != ' ') {
+
+      if (theActualPhrase.charAt(i) != ' ') { // if the letter is different from a space it prints it
         $ul.append($li);
       }else {
         $ul.append($liSpace);

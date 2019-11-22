@@ -28,6 +28,9 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  /*-----------------------------BachroundColor-------------------------------*/
+  background-image: linear-gradient(to left bottom, #ebd794, #c0ce87, #92c485, #5fb88a, #00aa95);
+  /*-----------------------------END BachroundColor---------------------------*/
 }
 
 li, ol, ul {
@@ -60,13 +63,29 @@ button {
   -o-transition: var(--transition);
   transition: var(--transition);
   cursor: pointer;
+  /*-----------------------------FontFamily-----------------------------------*/
   font-family: JosefinSans_SemiBoldItalic;
+  /*-----------------------------END FontFamily-------------------------------*/
 }
 
 #btn__reset {
 	width: 200px;
 	margin: 0 auto;
 }
+
+/*----------------Button hover effet and Animation----------------------------*/
+#btn__reset:hover{
+  letter-spacing: 5px;
+}
+.btn__reset_animation{
+  animation-name: stratButton;
+  animation-duration: 1s;
+}
+@keyframes stratButton {
+  20% {transform:scale(1.5);}
+  55% {transform: rotate(360deg) scale(1); background-color:#74d774; font-size: 25px; color: white; width: 250px;}
+}
+/*----------------END Button hover effet and Animation------------------------*/
 
 .main-container {
   display: flex;
@@ -87,11 +106,27 @@ button {
 }
 
 /* Title */
-
+/*------------------------Header Float Animation -----------------------------*/
 .header {
   color: #3a3f58;
+  animation: float 6s ease-in-out infinite;
+  z-index: -1;
 }
-
+@keyframes float {
+	0% {
+		text-shadow: 0 5px 15px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		text-shadow: 0 25px 15px  rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		text-shadow: 0 5px 15px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+/*------------------------END Header Float Animation -------------------------*/
 
 /* Phrase */
 
@@ -102,7 +137,7 @@ button {
   padding: 20px 1px 0 1px;
   margin-right: 2px;
   color: transparent;
-  background: var(--color-neutral-light);
+  background: white;
   border-radius: 5px;
 }
 
@@ -114,7 +149,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #135c69;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -133,15 +168,20 @@ button {
   justify-content: center;
 }
 
+/*--------------------------keyboard Effect-----------------------------------*/
+.key:hover{
+  border-radius: 15px;
+}
+/*--------------------------END keyboard Effect-------------------------------*/
 .chosen {
-  background: #3a3f58;
+  background: #135c69;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
 
 .wrong {
-  background: #f7a964;
+  background: #f76464;
   color: #FFFFFF;
 }
 
@@ -162,6 +202,25 @@ button {
   border-right: solid 3px rgba(0, 0, 0, 0);
 }
 
+/*-------------------------Scoreboard Shake Animation-------------------------*/
+.scoreboard_shake{
+  animation-name: slowshake;
+  animation-duration: 0.3s;
+}
+ @keyframes slowshake {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 50%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  30%, 70% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+/*-------------------------END Scoreboard Shake Animation---------------------*/
 
 /* Overlay */
 
@@ -176,38 +235,55 @@ button {
   left: 0;
   right: 0;
   border-radius: 5px;
+  /*--------------------------Z-index-----------------------------------------*/
+  z-index: 1;
+  /*--------------------------END Z-index-------------------------------------*/
 }
 
 .title {
   color: #FFF;
 }
+/*-------------------------PHRASE HUNTER Expand Animation---------------------*/
+.title_animation{
+  animation-name: expand;
+  animation-duration: 6s;
+}
+@-webkit-keyframes expand {
+  25%  {letter-spacing: 44px;}
+}
+/*-------------------------END PHRASE HUNTER Expand Animation-----------------*/
 
-.start {
-  background-color: #f92162;
-  background-image: url('../images/background_2.jpg');
-  background-size: cover;
+.start { /*---------------------background-image------------------------------*/
+  background-color: #3a3f57;
+  background-image: linear-gradient(to right top, #571845, #621646, #6d1446, #781144, #830e42, #8c0b41, #950940, #9e073e, #a8043e, #b3013d, #bd003b, #c70039);
 }
 
 .start a {
   color: #fff;
 }
 
-.win {
-  background-color: var(--color-win);
+.win { /*---------------------background-image--------------------------------*/
+  background-color: #7bce85;
+  background-image: linear-gradient(to right top, #003f00, #004e02, #025e02, #066e02, #0c7e02, #268c02, #399a01, #4ba800, #69b600, #85c400, #a1d200, #bee000);
 }
 
 .win a {
   color: var(--color-win);
 }
 
-.lose {
-  background-color: #f5785f;
+.lose { /*---------------------background-image--------------------------------*/
+  background-color: #f37963;
+  background-image: linear-gradient(to top, #f43737, #c5292c, #971c21, #6b1016, #430606);
 }
 
 .lose a {
   color: var(--color-lose);
 }
 
+
+
+
+/*------------------FONTS-----------------------------------------------------*/
 @font-face {
   font-family: JosefinSans_Bold;
   src: url('../fonts/JosefinSans/JosefinSans-Bold.ttf');
@@ -220,3 +296,4 @@ button {
   font-family: OdibeeSans;
   src: url('../fonts/OdibeeSans/OdibeeSans-Regular.ttf');
 }
+/*------------------END FONTS-------------------------------------------------*/

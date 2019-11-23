@@ -41,6 +41,7 @@
     this.missed = 0;
     $('.tries img').attr('src', 'images/liveHeart.png');
     $('.key').removeClass('wrong').removeClass('chosen');
+    $('.key').attr("disable", false); // enabling the button
   }
 
   // * Checks for winning move
@@ -102,9 +103,14 @@
     if (!button.classList.contains('chosen') && !button.classList.contains('wrong')) {
       if (this.activePhrase.checkLetter(button.textContent)) { // check that the letter is in the phrase
         button.classList.add('chosen');
+        button.setAttribute("disable", true); // Disabling the button
         this.activePhrase.showMatchedLetter(button.textContent);
+        if (this.checkForWin()) {
+          this.gameOver(true);
+        }
       }else {
         this.removeLife();
+        button.setAttribute("disable", true); // Disabling the button
         button.classList.add('wrong');
 
         //--------- Shake heart animation -----------------------
@@ -113,9 +119,6 @@
         element.classList.remove("scoreboard_shake");
         void element.offsetWidth;
         element.classList.add("scoreboard_shake");
-      }
-      if (this.checkForWin()) {
-        this.gameOver(true);
       }
     }
   };

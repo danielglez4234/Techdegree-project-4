@@ -146,7 +146,7 @@ button {
 }
 
 
-
+/*-----------------------------------show_letter_animation------------------------------------------*/
 .show {
   color: #fff;
   background-color: #135c69;
@@ -159,8 +159,29 @@ button {
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
 }
+.show_letter_animation{
+  animation-name: swing;
+  animation-duration: 0.5s;
+}
 
-
+@keyframes swing {
+  20% {
+    transform: rotate3d(0, 0, 1, 15deg);
+  }
+  40% {
+    transform: rotate3d(0, 0, 1, -10deg);
+  }
+  60% {
+    transform: rotate3d(0, 0, 1, 5deg);
+  }
+  80% {
+    transform: rotate3d(0, 0, 1, -5deg);
+  }
+  to {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+/*--------------------------------------------------------------------------------------------------*/
 /* Keyboard */
 
 .keyrow {
@@ -171,6 +192,10 @@ button {
 /*--------------------------keyboard Effect-----------------------------------*/
 .key:hover{
   border-radius: 15px;
+}
+.key:active{
+  transition: 0.1s ease;
+  transform: translateY(2px);
 }
 /*--------------------------END keyboard Effect-------------------------------*/
 .chosen {

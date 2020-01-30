@@ -39,7 +39,7 @@
     const $printedPhrase = $('.letter');
     for (let i = 0; i < $printedPhrase.length; i++) {
       if ($printedPhrase[i].textContent === letter) {
-        $printedPhrase.eq(i).addClass('show');
+        $printedPhrase.eq(i).addClass('show show_letter_animation');
       }
     }
   };
